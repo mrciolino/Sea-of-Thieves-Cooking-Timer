@@ -1,3 +1,13 @@
+
+.box {
+    width: 200px; height: 100px;
+    background-size: 100% 200%;
+    background-image: linear-gradient(to bottom, red 50%, black 50%);
+    -webkit-transition: background-position 1s;
+    -moz-transition: background-position 1s;
+    transition: background-position 1s;
+}
+
 /**
 * Template Name: OnePage - v4.3.0
 * Template URL: https://bootstrapmade.com/onepage-multipurpose-bootstrap-template/
