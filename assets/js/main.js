@@ -1,6 +1,7 @@
 function start_timer(food) {
     console.log(food);
-    // then after that is over do green
+
+    // slide down color chagne the background
     transition.begin(document.getElementById("hero"), [{
         property: "background-color",
         from: "#ffffff",
@@ -8,6 +9,23 @@ function start_timer(food) {
         duration: "5s",
         timingFunction: "linear"
     }]);
+
+    // replace the food picture with the timer
+    var timer = new easytimer.Timer();
+    timer.start({
+        countdown: true,
+        startValues: {
+            seconds: 60
+        }
+    });
+    $('#countdownExample .values').html(timer.getTimeValues().toString().slice(-4));
+    timer.addEventListener('secondsUpdated', function (e) {
+        $('#countdownExample .values').html(timer.getTimeValues().toString().slice(-4));
+    });
+    timer.addEventListener('targetAchieved', function (e) {
+        $('#countdownExample .values').html('Food Cooked');
+    });
+
 }
 
 
