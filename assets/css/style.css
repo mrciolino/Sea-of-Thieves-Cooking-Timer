@@ -3,7 +3,8 @@
 .centered {
     position: absolute;
     top: 25%;
-    width: 100%;
+    right: 6%;
+    width: 81%;
     text-align: center;
 }
 
@@ -12,9 +13,21 @@
     color: #000;
     font-weight: 1000;
     background-color: rgba(255, 255, 255, 0.5);
-    font-size: 1.5em;
-    margin-right: 5px;
+    font-size: 1.75em;
+    margin-left: -10px;
     text-shadow: -1px 0 black;
+}
+
+.notransition {
+    -webkit-transition: none !important;
+    -moz-transition: none !important;
+    -o-transition: none !important;
+    transition: none !important;
+}
+
+.link_box {
+    font-size: 36px;
+    color: #16507b;
 }
 
 
@@ -124,6 +137,7 @@ h6 {
     0% {
         transform: rotate(0deg);
     }
+
     100% {
         transform: rotate(360deg);
     }
@@ -133,6 +147,7 @@ h6 {
     0% {
         transform: rotate(0deg);
     }
+
     100% {
         transform: rotate(360deg);
     }
@@ -172,7 +187,7 @@ h6 {
     margin: 0;
     padding: 0;
     line-height: 1;
-    font-weight: 300;
+    font-weight: 500;
     letter-spacing: 0.5px;
     font-family: "Poppins", sans-serif;
 }
@@ -222,7 +237,7 @@ h6 {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 10px 0 10px 30px;
+    /* padding: 10px 0 10px 30px; */
     font-size: 14px;
     color: #16507b;
     white-space: nowrap;
@@ -314,6 +329,7 @@ h6 {
     .navbar .dropdown .dropdown ul {
         left: -90%;
     }
+
     .navbar .dropdown .dropdown:hover>ul {
         left: -100%;
     }
@@ -341,6 +357,7 @@ h6 {
     .mobile-nav-toggle {
         display: block;
     }
+
     .navbar ul {
         display: none;
     }
@@ -433,6 +450,7 @@ h6 {
 --------------------------------------------------------------*/
 
 #hero {
+    padding-top: 20px;
     margin-top: 50px;
     width: 100%;
     height: 100vh;
@@ -441,7 +459,7 @@ h6 {
 
 #hero:before {
     content: "";
-    background: rgba(255, 255, 255, 0.5);
+    background: rgba(255, 255, 255, 0.1);
     position: absolute;
     bottom: 0;
     top: 0;
@@ -452,6 +470,7 @@ h6 {
 #hero .container {
     /* padding-top: 80px; */
 }
+
 
 #hero h1 {
     margin: 0;
@@ -474,7 +493,7 @@ h6 {
     font-size: 14px;
     letter-spacing: 0.5px;
     display: inline-block;
-    padding: 14px 50px;
+    padding: 14px;
     border-radius: 5px;
     transition: 0.5s;
     margin-top: 30px;
@@ -500,9 +519,34 @@ h6 {
     transition: all 0.3s ease-in-out;
     border-radius: 8px;
     /* css animation */
-    background-size: 100% 200%;
-    background-image: linear-gradient(to bottom, white 50%, green 50%);
+    background-size: 100% 301%;
+    background-image: linear-gradient(to bottom, white 33.3%, green 33.3%, red 33.3%, red 66.6%, green 66.6%);
 }
+
+.pulse {
+    /* pulsating */
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 1);
+    transform: scale(1);
+    animation: pulse-red 2s infinite;
+}
+
+@keyframes pulse-red {
+    0% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(255, 82, 82, 0.7);
+    }
+
+    70% {
+        transform: scale(1);
+        box-shadow: 0 0 0 10px rgba(255, 82, 82, 0);
+    }
+
+    100% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(255, 82, 82, 0);
+    }
+}
+
 
 #hero .icon-box .title {
     font-weight: 700;
@@ -555,10 +599,12 @@ h6 {
     #hero {
         height: auto;
     }
+
     #hero h1 {
         font-size: 28px;
         line-height: 36px;
     }
+
     #hero h2 {
         font-size: 18px;
         line-height: 24px;
@@ -571,7 +617,7 @@ h6 {
 --------------------------------------------------------------*/
 
 section {
-    padding: 20px 0;
+    /* padding: 20px 0; */
     overflow: hidden;
 }
 
@@ -807,6 +853,7 @@ section {
         transform: scale(0.6, 0.6);
         opacity: 1;
     }
+
     100% {
         transform: scale(1, 1);
         opacity: 0;
@@ -818,6 +865,7 @@ section {
         transform: scale(0.6, 0.6);
         opacity: 1;
     }
+
     100% {
         transform: scale(1, 1);
         opacity: 0;
@@ -1757,6 +1805,7 @@ section {
     0% {
         transform: rotate(0deg);
     }
+
     100% {
         transform: rotate(360deg);
     }
@@ -1766,6 +1815,7 @@ section {
     0% {
         transform: rotate(0deg);
     }
+
     100% {
         transform: rotate(360deg);
     }
@@ -1818,9 +1868,11 @@ section {
     .breadcrumbs .d-flex {
         display: block !important;
     }
+
     .breadcrumbs ol {
         display: block;
     }
+
     .breadcrumbs ol li {
         display: inline-block;
     }

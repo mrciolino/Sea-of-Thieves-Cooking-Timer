@@ -14,7 +14,9 @@
     <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+        rel="stylesheet">
 
     <!-- Vendor CSS Files -->
     <link href="assets/vendor/aos/aos.css" rel="stylesheet">
@@ -34,15 +36,17 @@
 
     <!-- ======= Header ======= -->
     <header id="header" class="fixed-top ">
-        <div class="container d-flex align-items-center">
+        <div class="container d-flex justify-content-between">
             <h1 class="logo me-auto">
                 <a href="index.html"><img src="assets/img/fish_logo.png" class="m-2"></img>Cooking Timer</a>
             </h1>
-            <nav id="navbar" class="navbar">
-                <button type="button" class="btn btn-outline-primary btn-sm">Donate</button>
-            </nav>
+            <div class="social">
+                <a href="https://github.com/mrciolino/SoT_Fishing_Timer" target="_blank"><i class="ri-github-fill link_box"></i></a>
+                <a href="assets\img\guide.png" target="_blank"><i class="ri-book-fill link_box"></i></a>
+            </div>
         </div>
     </header>
+
 
     <!-- ======= Hero Section ======= -->
     <section class="container" id="hero" class="d-flex align-items-center" data-aos="fade-up" data-aos-delay="100">
@@ -50,9 +54,9 @@
         <div class="row icon-boxes">
 
             <div class="col-6 col-lg-3 d-flex align-items-center mb-2">
-                <div id="fish" class="icon-box" onclick="start_timer('fish')">
+                <div id="fish" class="icon-box">
                     <div class="icon">
-                        <img src="assets\img\fish.png" class="img-fluid rounded mx-auto d-block" alt="...">
+                        <img src="assets\img\fish.png" class="img-fluid rounded mx-auto d-block" alt="Fish">
                         <div id="countdownfish" class="centered">
                             <div class="values" id="timer-text"></div>
                         </div>
@@ -62,9 +66,9 @@
             </div>
 
             <div class="col-6 col-lg-3 d-flex align-items-stretch mb-2">
-                <div class="icon-box" id="trophy" onclick="start_timer('trophy')">
+                <div class="icon-box" id="trophy">
                     <div class="icon">
-                        <img src="assets\img\trophy.png " class="img-fluid rounded mx-auto d-block" alt="...">
+                        <img src="assets\img\trophy.png " class="img-fluid rounded mx-auto d-block" alt="Trophy Fish">
                         <div id="countdowntrophy" class="centered">
                             <div class="values" id="timer-text"></div>
                         </div>
@@ -74,9 +78,9 @@
             </div>
 
             <div class="col-6 col-lg-3 d-flex align-items-stretch mb-2">
-                <div class="icon-box" id="chicken" onclick="start_timer('chicken')">
+                <div class="icon-box" id="chicken">
                     <div class="icon">
-                        <img src="assets\img\chicken.png" class="img-fluid rounded mx-auto d-block" alt="...">
+                        <img src="assets\img\chicken.png" class="img-fluid rounded mx-auto d-block" alt="Chicken">
                         <div id="countdownchicken" class="centered">
                             <div class="values" id="timer-text"></div>
                         </div>
@@ -86,20 +90,21 @@
             </div>
 
             <div class="col-6 col-lg-3 d-flex align-items-stretch mb-2">
-                <div class="icon-box" id="pork" onclick="start_timer('pork')">
+                <div class="icon-box" id="pork">
                     <div class="icon">
-                        <img src="assets\img\pork.png" class="img-fluid rounded mx-auto d-block" alt="..."></div>
-                    <div id="countdownpork" class="centered">
-                        <div class="values" id="timer-text"></div>
+                        <img src="assets\img\pork.png" class="img-fluid rounded mx-auto d-block" alt="Pork">
+                        <div id="countdownpork" class="centered">
+                            <div class="values" id="timer-text"></div>
+                        </div>
                     </div>
                     <h4 class="title"><a>Pork</a></h4>
                 </div>
             </div>
 
             <div class="col-6 col-lg-3 d-flex align-items-stretch mb-2">
-                <div class="icon-box" id="snake" onclick="start_timer('snake')">
+                <div class="icon-box" id="snake">
                     <div class="icon">
-                        <img src="assets\img\snake.png" class="img-fluid rounded mx-auto d-block" alt="...">
+                        <img src="assets\img\snake.png" class="img-fluid rounded mx-auto d-block" alt="Snake">
                         <div id="countdownsnake" class="centered">
                             <div class="values" id="timer-text"></div>
                         </div>
@@ -109,9 +114,9 @@
             </div>
 
             <div class="col-6 col-lg-3 d-flex align-items-stretch mb-2">
-                <div class="icon-box" id="shark" onclick="start_timer('shark')">
+                <div class="icon-box" id="shark">
                     <div class="icon">
-                        <img src="assets\img\shark.png" class="img-fluid rounded mx-auto d-block" alt="...">
+                        <img src="assets\img\shark.png" class="img-fluid rounded mx-auto d-block" alt="Shark">
                         <div id="countdownshark" class="centered">
                             <div class="values" id="timer-text"></div>
                         </div>
@@ -121,9 +126,9 @@
             </div>
 
             <div class="col-6 col-lg-3 d-flex align-items-stretch mb-2">
-                <div class="icon-box" id="meg" onclick="start_timer('meg')">
+                <div class="icon-box" id="meg">
                     <div class="icon">
-                        <img src="assets\img\meg.png" class="img-fluid rounded mx-auto d-block" alt="...">
+                        <img src="assets\img\meg.png" class="img-fluid rounded mx-auto d-block" alt="Megalodon">
                         <div id="countdownmeg" class="centered">
                             <div class="values" id="timer-text"></div>
                         </div>
@@ -133,9 +138,9 @@
             </div>
 
             <div class="col-6 col-lg-3 d-flex align-items-stretch mb-2">
-                <div class="icon-box" id="kraken" onclick="start_timer('kraken')">
+                <div class="icon-box" id="kraken">
                     <div class="icon">
-                        <img src="assets\img\kraken.png" class="img-fluid rounded mx-auto d-block" alt="..."></i>
+                        <img src="assets\img\kraken.png" class="img-fluid rounded mx-auto d-block" alt="Kraken"></i>
                         <div id="countdownkraken" class="centered">
                             <div class="values" id="timer-text"></div>
                         </div>
@@ -145,11 +150,20 @@
             </div>
 
         </div>
+
     </section>
     <!-- End Hero -->
 
+    <footer id="footer">
+        <div class="row justify-content-center">
+            <div class="col-12 text-center" style="padding-bottom: 5px;">
+                Single Click Start - Double Click Clear - <a href="https://github.com/mrciolino/SoT_Fishing_Timer" target="_blank">Github</a> - <a
+                    href="assets\img\guide.png" target="_blank">Guide</a>
+            </div>
+        </div>
+    </footer>
+
     <div id="preloader"></div>
-    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
     <!-- Vendor JS Files -->
     <script src="assets/vendor/aos/aos.js"></script>
@@ -162,7 +176,6 @@
     <!-- Template Main JS File -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
-    <script src="assets\js\transition.min.js"></script>
     <script src="node_modules/easytimer.js/dist/easytimer.js"></script>
     <script src="assets/js/main.js"></script>
 

@@ -6,65 +6,126 @@ food_cooking_times_sea_of_thieves = {
     "pork": 65,
     "trophy": 80,
     "kraken": 100,
-    "meg": 100
+    "meg": 100,
+    "shark": 65
 }
 
 active_timers = {};
 
-function start_timer(food) {
-    console.log(food, active_timers);
-    let cooking_time = food_cooking_times_sea_of_thieves[food];
+function fetch_new_timer(cooking_time) {
+    let timer = new easytimer.Timer({
+        precision: 'secondTenths'
+    });
+    timer.start({
+        countdown: true,
+        startValues: {
+            seconds: cooking_time
+        },
 
-    // slide down color chagne the background
-    // transition.begin(document.getElementById("hero"), [{
-    //     property: "background-color",
-    //     from: "#ffffff",
-    //     to: "#00FF00",
-    //     duration: cooking_time + "s",
-    //     timingFunction: "linear"
-    // }]);
+    });
+    return timer;
+}
+
+function reset_element(food) {
+    document.getElementById(food).classList.add("notransition")
+    document.getElementById(food).style.backgroundPosition = "0px 0%";
+    document.getElementById(food).classList.remove("pulse") // remove burn timer pulse
+    document.getElementById(food).offsetHeight; // Trigger a reflow, flushing the CSS changes
+    document.getElementById(food).classList.remove("notransition")
+}
+
+function start_timer(food) {
 
     // overlay the food picture with the timer
-    var timer = new easytimer.Timer();
+    let cooking_time = food_cooking_times_sea_of_thieves[food];
+    let timer = fetch_new_timer(cooking_time);
+
+    // logic for if active timer already
     if (active_timers[food] != undefined) {
-        console.log("timer already running");
         active_timers[food].reset();
+        reset_element(food);
     } else {
         active_timers[food] = timer;
-        timer.start({
-            countdown: true,
-            startValues: {
-                seconds: cooking_time
+        // add callbacks for event
+        $('#countdown' + food + ' .values').html(timer.getTimeValues().toString().slice(-4));
+        timer.addEventListener('secondsUpdated', function (e) {
+            $('#countdown' + food + ' .values').html(timer.getTimeValues().toString().slice(-4));
+        });
+        timer.addEventListener('targetAchieved', function (e) {
+            // if data timer-active is false, then don't start call burn timer
+            if (document.getElementById(food).getAttribute("timer-active") == 'true') {
+                start_burnt_timer(food);
             }
         });
     }
 
-    $('#countdown' + food + ' .values').html(timer.getTimeValues().toString().slice(-4));
-    timer.addEventListener('secondsUpdated', function(e) {
-        $('#countdown' + food + ' .values').html(timer.getTimeValues().toString().slice(-4));
-    });
-    timer.addEventListener('targetAchieved', function(e) {
-        start_burnt_food_timer(food);
-    });
+    // print timers to console
+    console.log(active_timers);
 
-    // transition
+    // transition background position
     document.getElementById(food).style.cssText = `
     -webkit-transition: background-position ` + String(cooking_time) + `s linear; 
     -moz-transition: background-position ` + String(cooking_time) + `s linear;
     transition:  background-position ` + String(cooking_time) + `s linear;`;
-    document.getElementById(food).style.backgroundPosition = "0px -100%";
+    document.getElementById(food).style.backgroundPosition = "0px -50%";
+
+    // add a data tag to the food element
+    document.getElementById(food).setAttribute("timer-active", true);
 }
 
+function start_burnt_timer(food) {
 
-// let countdown_element = '#countdown_' + food + '.values'
-// console.log(countdown_element);
-// $(countdown_element).html(timer.getTimeValues().toString().slice(-4));
-// timer.addEventListener('secondsUpdated', function(e) {
-//     $(countdown_element).html(timer.getTimeValues().toString().slice(-4));
-// });
-// timer.addEventListener('targetAchieved', function(e) {
-//     $(countdown_element).html('Done');
-// });
+    // transition background to red + pulse red
+    document.getElementById(food).style.backgroundPosition = "0px -99.9%";
+    document.getElementById(food).classList.add("pulse");
+
+    // start burnt timer to cooking timer and add events
+    let cooking_time = food_cooking_times_sea_of_thieves[food];
+    let timer = fetch_new_timer(cooking_time);
+    active_timers[food] = timer;
+    $('#countdown' + food + ' .values').html(timer.getTimeValues().toString().slice(-4));
+    timer.addEventListener('secondsUpdated', function (e) {
+        $('#countdown' + food + ' .values').html(timer.getTimeValues().toString().slice(-4));
+    });
+    timer.addEventListener('targetAchieved', function (e) {
+        $('#countdown' + food + ' .values').html("🔥");
+    });
+}
+
+var double = function () {
+        reset_element(this.id);
+        active_timers[this.id].stop(); // stop timer
+        delete active_timers[this.id]; // delete timer
+        $('#countdown' + this.id + ' .values')[0].innerHTML = ""; // remove timer text
+    },
+    single = function () {
+        start_timer(this.id);
+    };
+
+jQuery.fn.single_double_click = function (single_click_callback, double_click_callback, timeout) {
+    return this.each(function () {
+        var clicks = 0,
+            self = this;
+        jQuery(this).click(function (event) {
+            clicks++;
+            if (clicks == 1) {
+                setTimeout(function () {
+                    if (clicks == 1) {
+                        single_click_callback.call(self, event);
+                    } else {
+                        double_click_callback.call(self, event);
+                    }
+                    clicks = 0;
+                }, timeout || 300);
+            }
+        });
+    });
+}
+
+// for food type in dict add the double click detector
+for (let food in food_cooking_times_sea_of_thieves) {
+    $('#' + food).single_double_click(single, double);
+};
 
 
 /**
@@ -73,7 +134,7 @@ function start_timer(food) {
  * Author: BootstrapMade.com
  * License: https://bootstrapmade.com/license/
  */
-(function() {
+(function () {
     "use strict";
 
     /**
@@ -178,7 +239,7 @@ function start_timer(food) {
     /**
      * Mobile nav toggle
      */
-    on('click', '.mobile-nav-toggle', function(e) {
+    on('click', '.mobile-nav-toggle', function (e) {
         select('#navbar').classList.toggle('navbar-mobile')
         this.classList.toggle('bi-list')
         this.classList.toggle('bi-x')
@@ -187,7 +248,7 @@ function start_timer(food) {
     /**
      * Mobile nav dropdowns activate
      */
-    on('click', '.navbar .dropdown > a', function(e) {
+    on('click', '.navbar .dropdown > a', function (e) {
         if (select('#navbar').classList.contains('navbar-mobile')) {
             e.preventDefault()
             this.nextElementSibling.classList.toggle('dropdown-active')
@@ -197,7 +258,7 @@ function start_timer(food) {
     /**
      * Scrool with ofset on links with a class name .scrollto
      */
-    on('click', '.scrollto', function(e) {
+    on('click', '.scrollto', function (e) {
         if (select(this.hash)) {
             e.preventDefault()
 
@@ -281,9 +342,9 @@ function start_timer(food) {
 
             let portfolioFilters = select('#portfolio-flters li', true);
 
-            on('click', '#portfolio-flters li', function(e) {
+            on('click', '#portfolio-flters li', function (e) {
                 e.preventDefault();
-                portfolioFilters.forEach(function(el) {
+                portfolioFilters.forEach(function (el) {
                     el.classList.remove('filter-active');
                 });
                 this.classList.add('filter-active');
@@ -291,7 +352,7 @@ function start_timer(food) {
                 portfolioIsotope.arrange({
                     filter: this.getAttribute('data-filter')
                 });
-                portfolioIsotope.on('arrangeComplete', function() {
+                portfolioIsotope.on('arrangeComplete', function () {
                     AOS.refresh()
                 });
             }, true);
