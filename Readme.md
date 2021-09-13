@@ -8,7 +8,7 @@
 </p>
 
 # Sea of Thieves Cooking Timer
-Simple and responsive Sea of Thieves Cooking Timer web applcation. Provides countdown until cooked followed by a countdown untill burnt timer. Check it out here on the <a href="https://sea-of-thieves-cooking-app.herokuapp.com/" target="_blank">Website</a>
+Simple and responsive Sea of Thieves Cooking Timer web application. Provides countdown until cooked followed by a countdown until burnt. Donate if you find it helpful. Check it out here on the <a href="https://sea-of-thieves-cooking-app.herokuapp.com/" target="_blank">Website</a>
 
 ## How to Use
  - Single Click Start
