@@ -15,4 +15,4 @@ Simple and responsive Sea of Thieves Cooking Timer web applcation. Provides coun
  - Double Click Clear 
 
 ## Cannonballl Joe's Fishing Guide
-![]("assets\img\guide.png")
+<img src="assets\img\guide.png">
