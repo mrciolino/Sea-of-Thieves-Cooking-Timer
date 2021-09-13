@@ -8,11 +8,11 @@
 </p>
 
 # Sea of Thieves Cooking Timer
-Simple and responsive Sea of Thieves Cooking Timer web applcation. Provides countdown until cooked followed by a countdown untill burnt timer. Check it out here on the <a href="assets\img\guide.png" target="_blank">Website</a>!
+Simple and responsive Sea of Thieves Cooking Timer web applcation. Provides countdown until cooked followed by a countdown untill burnt timer. Check it out here on the <a href="assets\img\guide.png" target="_blank">Website</a>
 
 ## How to Use
  - Single Click Start
  - Double Click Clear 
 
 ## Cannonballl Joe's Fishing Guide
-![](assets\img\guide.png)
+![]("assets\img\guide.png")
