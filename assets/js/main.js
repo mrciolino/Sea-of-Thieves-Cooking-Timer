@@ -1,32 +1,70 @@
+food_cooking_times_sea_of_thieves = {
+    "fish": 45,
+    "chicken": 65,
+    "snake": 65,
+    "pig": 65,
+    "pork": 65,
+    "trophy": 80,
+    "kraken": 100,
+    "meg": 100
+}
+
+active_timers = {};
+
 function start_timer(food) {
-    console.log(food);
+    console.log(food, active_timers);
+    let cooking_time = food_cooking_times_sea_of_thieves[food];
 
     // slide down color chagne the background
-    transition.begin(document.getElementById("hero"), [{
-        property: "background-color",
-        from: "#ffffff",
-        to: "#0FFF50",
-        duration: "5s",
-        timingFunction: "linear"
-    }]);
+    // transition.begin(document.getElementById("hero"), [{
+    //     property: "background-color",
+    //     from: "#ffffff",
+    //     to: "#00FF00",
+    //     duration: cooking_time + "s",
+    //     timingFunction: "linear"
+    // }]);
 
-    // replace the food picture with the timer
+    // overlay the food picture with the timer
     var timer = new easytimer.Timer();
-    timer.start({
-        countdown: true,
-        startValues: {
-            seconds: 60
-        }
+    if (active_timers[food] != undefined) {
+        console.log("timer already running");
+        active_timers[food].reset();
+    } else {
+        active_timers[food] = timer;
+        timer.start({
+            countdown: true,
+            startValues: {
+                seconds: cooking_time
+            }
+        });
+    }
+
+    $('#countdown' + food + ' .values').html(timer.getTimeValues().toString().slice(-4));
+    timer.addEventListener('secondsUpdated', function(e) {
+        $('#countdown' + food + ' .values').html(timer.getTimeValues().toString().slice(-4));
     });
-    $('#countdownExample .values').html(timer.getTimeValues().toString().slice(-4));
-    timer.addEventListener('secondsUpdated', function (e) {
-        $('#countdownExample .values').html(timer.getTimeValues().toString().slice(-4));
-    });
-    timer.addEventListener('targetAchieved', function (e) {
-        $('#countdownExample .values').html('Food Cooked');
+    timer.addEventListener('targetAchieved', function(e) {
+        start_burnt_food_timer(food);
     });
 
+    // transition
+    document.getElementById(food).style.cssText = `
+    -webkit-transition: background-position ` + String(cooking_time) + `s linear; 
+    -moz-transition: background-position ` + String(cooking_time) + `s linear;
+    transition:  background-position ` + String(cooking_time) + `s linear;`;
+    document.getElementById(food).style.backgroundPosition = "0px -100%";
 }
+
+
+// let countdown_element = '#countdown_' + food + '.values'
+// console.log(countdown_element);
+// $(countdown_element).html(timer.getTimeValues().toString().slice(-4));
+// timer.addEventListener('secondsUpdated', function(e) {
+//     $(countdown_element).html(timer.getTimeValues().toString().slice(-4));
+// });
+// timer.addEventListener('targetAchieved', function(e) {
+//     $(countdown_element).html('Done');
+// });
 
 
 /**
@@ -35,7 +73,7 @@ function start_timer(food) {
  * Author: BootstrapMade.com
  * License: https://bootstrapmade.com/license/
  */
-(function () {
+(function() {
     "use strict";
 
     /**
@@ -140,7 +178,7 @@ function start_timer(food) {
     /**
      * Mobile nav toggle
      */
-    on('click', '.mobile-nav-toggle', function (e) {
+    on('click', '.mobile-nav-toggle', function(e) {
         select('#navbar').classList.toggle('navbar-mobile')
         this.classList.toggle('bi-list')
         this.classList.toggle('bi-x')
@@ -149,7 +187,7 @@ function start_timer(food) {
     /**
      * Mobile nav dropdowns activate
      */
-    on('click', '.navbar .dropdown > a', function (e) {
+    on('click', '.navbar .dropdown > a', function(e) {
         if (select('#navbar').classList.contains('navbar-mobile')) {
             e.preventDefault()
             this.nextElementSibling.classList.toggle('dropdown-active')
@@ -159,7 +197,7 @@ function start_timer(food) {
     /**
      * Scrool with ofset on links with a class name .scrollto
      */
-    on('click', '.scrollto', function (e) {
+    on('click', '.scrollto', function(e) {
         if (select(this.hash)) {
             e.preventDefault()
 
@@ -243,9 +281,9 @@ function start_timer(food) {
 
             let portfolioFilters = select('#portfolio-flters li', true);
 
-            on('click', '#portfolio-flters li', function (e) {
+            on('click', '#portfolio-flters li', function(e) {
                 e.preventDefault();
-                portfolioFilters.forEach(function (el) {
+                portfolioFilters.forEach(function(el) {
                     el.classList.remove('filter-active');
                 });
                 this.classList.add('filter-active');
@@ -253,7 +291,7 @@ function start_timer(food) {
                 portfolioIsotope.arrange({
                     filter: this.getAttribute('data-filter')
                 });
-                portfolioIsotope.on('arrangeComplete', function () {
+                portfolioIsotope.on('arrangeComplete', function() {
                     AOS.refresh()
                 });
             }, true);
