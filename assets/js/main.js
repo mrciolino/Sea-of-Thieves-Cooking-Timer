@@ -93,8 +93,10 @@ function start_burnt_timer(food) {
 
 var double = function() {
         reset_element(this.id);
-        active_timers[this.id].stop(); // stop timer
-        delete active_timers[this.id]; // delete timer
+        if (active_timers[this.id]) {
+            active_timers[this.id].stop(); // stop timer
+            delete active_timers[this.id]; // delete timer
+        }
         $('#countdown' + this.id + ' .values')[0].innerHTML = ""; // remove timer text
     },
     single = function() {
