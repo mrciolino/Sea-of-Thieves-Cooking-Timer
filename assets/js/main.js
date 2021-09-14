@@ -1,12 +1,36 @@
 food_cooking_times_sea_of_thieves = {
-    "fish": { "cooked": 40, "burnt": 40 },
-    "chicken": { "cooked": 60, "burnt": 60 },
-    "snake": { "cooked": 60, "burnt": 60 },
-    "pork": { "cooked": 60, "burnt": 60 },
-    "shark": { "cooked": 60, "burnt": 60 },
-    "trophy": { "cooked": 90, "burnt": 90 },
-    "kraken": { "cooked": 120, "burnt": 120 },
-    "meg": { "cooked": 120, "burnt": 120 }
+    "fish": {
+        "cooked": 40,
+        "burnt": 40
+    },
+    "chicken": {
+        "cooked": 60,
+        "burnt": 60
+    },
+    "snake": {
+        "cooked": 60,
+        "burnt": 60
+    },
+    "pork": {
+        "cooked": 60,
+        "burnt": 60
+    },
+    "shark": {
+        "cooked": 60,
+        "burnt": 60
+    },
+    "trophy": {
+        "cooked": 90,
+        "burnt": 90
+    },
+    "kraken": {
+        "cooked": 120,
+        "burnt": 120
+    },
+    "meg": {
+        "cooked": 120,
+        "burnt": 120
+    }
 }
 
 active_timers = {};
@@ -31,6 +55,7 @@ function reset_element(food) {
     document.getElementById(food).classList.remove("pulse") // remove burn timer pulse
     document.getElementById(food).offsetHeight; // Trigger a reflow, flushing the CSS changes
     document.getElementById(food).classList.remove("notransition")
+    document.body.classList.remove("burnt_background_pulse")
 }
 
 function start_timer(food) {
@@ -47,10 +72,10 @@ function start_timer(food) {
         active_timers[food] = timer;
         // add callbacks for event
         $('#countdown' + food + ' .values').html(timer.getTimeValues().toString().slice(-4));
-        timer.addEventListener('secondsUpdated', function(e) {
+        timer.addEventListener('secondsUpdated', function (e) {
             $('#countdown' + food + ' .values').html(timer.getTimeValues().toString().slice(-4));
         });
-        timer.addEventListener('targetAchieved', function(e) {
+        timer.addEventListener('targetAchieved', function (e) {
             // if data timer-active is false, then don't start call burn timer
             if (document.getElementById(food).getAttribute("timer-active") == 'true') {
                 start_burnt_timer(food);
@@ -75,23 +100,30 @@ function start_timer(food) {
 function start_burnt_timer(food) {
 
     // transition background to red + pulse red
+    let cooking_time = food_cooking_times_sea_of_thieves[food]["burnt"];
+    document.getElementById(food).style.cssText = `
+    -webkit-transition: background-position ` + String(cooking_time) + `s linear; 
+    -moz-transition: background-position ` + String(cooking_time) + `s linear;
+    transition:  background-position ` + String(cooking_time) + `s linear;`;
     document.getElementById(food).style.backgroundPosition = "0px -99.9%";
-    document.getElementById(food).classList.add("pulse");
 
     // start burnt timer to cooking timer and add events
-    let cooking_time = food_cooking_times_sea_of_thieves[food]["burnt"];
     let timer = fetch_new_timer(cooking_time);
     active_timers[food] = timer;
     $('#countdown' + food + ' .values').html(timer.getTimeValues().toString().slice(-4));
-    timer.addEventListener('secondsUpdated', function(e) {
+    timer.addEventListener('secondsUpdated', function (e) {
         $('#countdown' + food + ' .values').html(timer.getTimeValues().toString().slice(-4));
     });
-    timer.addEventListener('targetAchieved', function(e) {
+    timer.addEventListener('targetAchieved', function (e) {
         $('#countdown' + food + ' .values').html("🔥");
     });
+
+    // pulse icon box + pulse background
+    document.getElementById(food).classList.add("pulse");
+    document.body.classList.add("burnt_background_pulse")
 }
 
-var double = function() {
+var double = function () {
         reset_element(this.id);
         if (active_timers[this.id]) {
             active_timers[this.id].stop(); // stop timer
@@ -99,18 +131,18 @@ var double = function() {
         }
         $('#countdown' + this.id + ' .values')[0].innerHTML = ""; // remove timer text
     },
-    single = function() {
+    single = function () {
         start_timer(this.id);
     };
 
-jQuery.fn.single_double_click = function(single_click_callback, double_click_callback, timeout) {
-    return this.each(function() {
+jQuery.fn.single_double_click = function (single_click_callback, double_click_callback, timeout) {
+    return this.each(function () {
         var clicks = 0,
             self = this;
-        jQuery(this).click(function(event) {
+        jQuery(this).click(function (event) {
             clicks++;
             if (clicks == 1) {
-                setTimeout(function() {
+                setTimeout(function () {
                     if (clicks == 1) {
                         single_click_callback.call(self, event);
                     } else {
@@ -135,7 +167,7 @@ for (let food in food_cooking_times_sea_of_thieves) {
  * Author: BootstrapMade.com
  * License: https://bootstrapmade.com/license/
  */
-(function() {
+(function () {
     "use strict";
 
     /**
@@ -240,7 +272,7 @@ for (let food in food_cooking_times_sea_of_thieves) {
     /**
      * Mobile nav toggle
      */
-    on('click', '.mobile-nav-toggle', function(e) {
+    on('click', '.mobile-nav-toggle', function (e) {
         select('#navbar').classList.toggle('navbar-mobile')
         this.classList.toggle('bi-list')
         this.classList.toggle('bi-x')
@@ -249,7 +281,7 @@ for (let food in food_cooking_times_sea_of_thieves) {
     /**
      * Mobile nav dropdowns activate
      */
-    on('click', '.navbar .dropdown > a', function(e) {
+    on('click', '.navbar .dropdown > a', function (e) {
         if (select('#navbar').classList.contains('navbar-mobile')) {
             e.preventDefault()
             this.nextElementSibling.classList.toggle('dropdown-active')
@@ -259,7 +291,7 @@ for (let food in food_cooking_times_sea_of_thieves) {
     /**
      * Scrool with ofset on links with a class name .scrollto
      */
-    on('click', '.scrollto', function(e) {
+    on('click', '.scrollto', function (e) {
         if (select(this.hash)) {
             e.preventDefault()
 
@@ -343,9 +375,9 @@ for (let food in food_cooking_times_sea_of_thieves) {
 
             let portfolioFilters = select('#portfolio-flters li', true);
 
-            on('click', '#portfolio-flters li', function(e) {
+            on('click', '#portfolio-flters li', function (e) {
                 e.preventDefault();
-                portfolioFilters.forEach(function(el) {
+                portfolioFilters.forEach(function (el) {
                     el.classList.remove('filter-active');
                 });
                 this.classList.add('filter-active');
@@ -353,7 +385,7 @@ for (let food in food_cooking_times_sea_of_thieves) {
                 portfolioIsotope.arrange({
                     filter: this.getAttribute('data-filter')
                 });
-                portfolioIsotope.on('arrangeComplete', function() {
+                portfolioIsotope.on('arrangeComplete', function () {
                     AOS.refresh()
                 });
             }, true);
