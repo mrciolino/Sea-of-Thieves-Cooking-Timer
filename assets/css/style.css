@@ -30,6 +30,21 @@
     color: #16507b;
 }
 
+.burnt_background_pulse {
+    animation-name: color;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate-reverse;
+    animation-timing-function: ease;
+}
+
+@keyframes color {
+    from {}
+
+    to {
+        background-color: red;
+    }
+}
 
 /**
 * Template Name: OnePage - v4.3.0
@@ -520,7 +535,7 @@ h6 {
     border-radius: 8px;
     /* css animation */
     background-size: 100% 301%;
-    background-image: linear-gradient(to bottom, white 33.3%, green 33.3%, red 33.3%, red 66.6%, green 66.6%);
+    background-image: linear-gradient(to bottom, rgba(255,255,255,.75) 33.3%, green 33.3%, red 33.3%, red 66.6%, green 66.6%);
 }
 
 .pulse {
