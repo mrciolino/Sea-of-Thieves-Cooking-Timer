@@ -72,10 +72,10 @@ function start_timer(food) {
         active_timers[food] = timer;
         // add callbacks for event
         $('#countdown' + food + ' .values').html(timer.getTimeValues().toString().slice(-4));
-        timer.addEventListener('secondsUpdated', function (e) {
+        timer.addEventListener('secondsUpdated', function(e) {
             $('#countdown' + food + ' .values').html(timer.getTimeValues().toString().slice(-4));
         });
-        timer.addEventListener('targetAchieved', function (e) {
+        timer.addEventListener('targetAchieved', function(e) {
             // if data timer-active is false, then don't start call burn timer
             if (document.getElementById(food).getAttribute("timer-active") == 'true') {
                 start_burnt_timer(food);
@@ -111,10 +111,10 @@ function start_burnt_timer(food) {
     let timer = fetch_new_timer(cooking_time);
     active_timers[food] = timer;
     $('#countdown' + food + ' .values').html(timer.getTimeValues().toString().slice(-4));
-    timer.addEventListener('secondsUpdated', function (e) {
+    timer.addEventListener('secondsUpdated', function(e) {
         $('#countdown' + food + ' .values').html(timer.getTimeValues().toString().slice(-4));
     });
-    timer.addEventListener('targetAchieved', function (e) {
+    timer.addEventListener('targetAchieved', function(e) {
         $('#countdown' + food + ' .values').html("🔥");
     });
 
@@ -123,7 +123,7 @@ function start_burnt_timer(food) {
     document.body.classList.add("burnt_background_pulse")
 }
 
-var double = function () {
+var double = function() {
         reset_element(this.id);
         if (active_timers[this.id]) {
             active_timers[this.id].stop(); // stop timer
@@ -131,18 +131,18 @@ var double = function () {
         }
         $('#countdown' + this.id + ' .values')[0].innerHTML = ""; // remove timer text
     },
-    single = function () {
+    single = function() {
         start_timer(this.id);
     };
 
-jQuery.fn.single_double_click = function (single_click_callback, double_click_callback, timeout) {
-    return this.each(function () {
+jQuery.fn.single_double_click = function(single_click_callback, double_click_callback, timeout) {
+    return this.each(function() {
         var clicks = 0,
             self = this;
-        jQuery(this).click(function (event) {
+        jQuery(this).click(function(event) {
             clicks++;
             if (clicks == 1) {
-                setTimeout(function () {
+                setTimeout(function() {
                     if (clicks == 1) {
                         single_click_callback.call(self, event);
                     } else {
@@ -160,49 +160,13 @@ for (let food in food_cooking_times_sea_of_thieves) {
     $('#' + food).single_double_click(single, double);
 };
 
-(function($) {
-    $.fn.nodoubletapzoom = function() {
-        $(this).bind('touchstart', function preventZoom(e) {
-            var t2 = e.timeStamp,
-                t1 = $(this).data('lastTouch') || t2,
-                dt = t2 - t1,
-                fingers = e.originalEvent.touches.length;
-            $(this).data('lastTouch', t2);
-            if (!dt || dt > 500 || fingers > 1) return; // not double-tap
-
-            e.preventDefault(); // double tap - prevent the zoom
-            // also synthesize click events we just swallowed up
-            $(this).trigger('click').trigger('click');
-        });
-    };
-})(jQuery);
-
-(function($) {
-    var IS_IOS = /iphone|ipad/i.test(navigator.userAgent);
-    $.fn.nodoubletapzoom = function() {
-        if (IS_IOS)
-            $(this).bind('touchstart', function preventZoom(e) {
-                var t2 = e.timeStamp,
-                    t1 = $(this).data('lastTouch') || t2,
-                    dt = t2 - t1,
-                    fingers = e.originalEvent.touches.length;
-                $(this).data('lastTouch', t2);
-                if (!dt || dt > 500 || fingers > 1) return; // not double-tap
-
-                e.preventDefault(); // double tap - prevent the zoom
-                // also synthesize click events we just swallowed up
-                $(this).trigger('click').trigger('click');
-            });
-    };
-})(jQuery);
-
 /**
  * Template Name: OnePage - v4.3.0
  * Template URL: https://bootstrapmade.com/onepage-multipurpose-bootstrap-template/
  * Author: BootstrapMade.com
  * License: https://bootstrapmade.com/license/
  */
-(function () {
+(function() {
     "use strict";
 
     /**
@@ -307,7 +271,7 @@ for (let food in food_cooking_times_sea_of_thieves) {
     /**
      * Mobile nav toggle
      */
-    on('click', '.mobile-nav-toggle', function (e) {
+    on('click', '.mobile-nav-toggle', function(e) {
         select('#navbar').classList.toggle('navbar-mobile')
         this.classList.toggle('bi-list')
         this.classList.toggle('bi-x')
@@ -316,7 +280,7 @@ for (let food in food_cooking_times_sea_of_thieves) {
     /**
      * Mobile nav dropdowns activate
      */
-    on('click', '.navbar .dropdown > a', function (e) {
+    on('click', '.navbar .dropdown > a', function(e) {
         if (select('#navbar').classList.contains('navbar-mobile')) {
             e.preventDefault()
             this.nextElementSibling.classList.toggle('dropdown-active')
@@ -326,7 +290,7 @@ for (let food in food_cooking_times_sea_of_thieves) {
     /**
      * Scrool with ofset on links with a class name .scrollto
      */
-    on('click', '.scrollto', function (e) {
+    on('click', '.scrollto', function(e) {
         if (select(this.hash)) {
             e.preventDefault()
 
@@ -410,9 +374,9 @@ for (let food in food_cooking_times_sea_of_thieves) {
 
             let portfolioFilters = select('#portfolio-flters li', true);
 
-            on('click', '#portfolio-flters li', function (e) {
+            on('click', '#portfolio-flters li', function(e) {
                 e.preventDefault();
-                portfolioFilters.forEach(function (el) {
+                portfolioFilters.forEach(function(el) {
                     el.classList.remove('filter-active');
                 });
                 this.classList.add('filter-active');
@@ -420,7 +384,7 @@ for (let food in food_cooking_times_sea_of_thieves) {
                 portfolioIsotope.arrange({
                     filter: this.getAttribute('data-filter')
                 });
-                portfolioIsotope.on('arrangeComplete', function () {
+                portfolioIsotope.on('arrangeComplete', function() {
                     AOS.refresh()
                 });
             }, true);

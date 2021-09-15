@@ -2,7 +2,7 @@
   "_args": [
     [
       "@fortawesome/fontawesome-free@5.13.1",
-      "C:\\Users\\matt.ciolino\\Documents\\SoT_Fishing_Timer"
+      "C:\\Users\\Home\\Documents\\SoT_Fishing_Timer"
     ]
   ],
   "_from": "@fortawesome/fontawesome-free@5.13.1",
@@ -27,7 +27,7 @@
   ],
   "_resolved": "https://registry.npmjs.org/@fortawesome/fontawesome-free/-/fontawesome-free-5.13.1.tgz",
   "_spec": "5.13.1",
-  "_where": "C:\\Users\\matt.ciolino\\Documents\\SoT_Fishing_Timer",
+  "_where": "C:\\Users\\Home\\Documents\\SoT_Fishing_Timer",
   "author": {
     "name": "Dave Gandy",
     "email": "dave@fontawesome.com",
