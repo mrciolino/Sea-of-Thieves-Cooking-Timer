@@ -5,6 +5,9 @@
   <a href="https://www.paypal.com/donate?business=GUQQ96LMT48UY&no_recurring=0&item_name=To+maintain+the+service.&currency_code=USD">
       <img src="https://img.shields.io/badge/Donate-PayPal-green.svg" alt="paypal">
   </a>
+    <a href="http://donatecoins.org/btc/1HeMeMU2qUFDRZpRQMJ2v27Dw3h3gShJ5b">
+      <img src="http://donatecoins.org/btc/1HeMeMU2qUFDRZpRQMJ2v27Dw3h3gShJ5b.svg" alt="Bitcoin">
+  </a>
 </p>
 
 # Sea of Thieves Cooking Timer
