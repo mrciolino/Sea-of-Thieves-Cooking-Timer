@@ -1,23 +1,32 @@
-<p align="center">
-  <img src="assets\img\fish_logo.png" height="100px" width="100px">
-</p>
-<p align="center">
-  <a href="https://www.paypal.com/donate?business=GUQQ96LMT48UY&no_recurring=0&item_name=To+maintain+the+service.&currency_code=USD">
-      <img src="https://img.shields.io/badge/Donate-PayPal-green.svg" alt="paypal">
-  </a>
-    <a href="http://donatecoins.org/btc/1HeMeMU2qUFDRZpRQMJ2v27Dw3h3gShJ5b">
-      <img src="http://donatecoins.org/btc/1HeMeMU2qUFDRZpRQMJ2v27Dw3h3gShJ5b.svg" alt="Bitcoin">
-  </a>
-</p>
-
 # Sea of Thieves Cooking Timer
-Simple and responsive Sea of Thieves Cooking Timer web application. Provides countdown until cooked followed by a countdown until burnt. Donate if you find it helpful. Check it out here on the <a href="https://sea-of-thieves-cooking-app.herokuapp.com/" target="_blank">Website</a>
 
-## How to Use
- - Single Click Start
- - Double Click Clear 
+This is a simple and responsive web application that serves as a cooking timer for the game Sea of Thieves. It provides a countdown until cooked.
 
-<img src="assets\img\example.png">
+## Technologies Used
 
-## Cannonballl Joe's Fishing Guide
-<img src="assets\img\guide.png">
+This application was built using the following technologies:
+
+- Next.js - A React-based web framework for building server-side rendered (SSR) and static websites
+- TailwindCSS - A utility-first CSS framework for rapidly building custom user interfaces
+- @iconify/react - A library of icons for use in web development
+- @next/font/google - A package that allows for the easy use of Google Fonts in Next.js projects
+
+## Features
+
+- Simple and responsive design
+- Countdown timers for various types of food in Sea of Thieves
+- Single-click to start a timer, double-click to reset a timer
+- Links to the Github repo and a fishing guide for the game
+
+## Usage
+
+To use this application, simply click on one of the food items on the main page to start its corresponding timer. Double-clicking will reset the timer. The countdown will show the time until the food is cooked.
+
+## Acknowledgments
+
+- The game Sea of Thieves was developed by Rare and published by Xbox Game Studios.
+- The fishing guide used in this application was created by Reddit user /u/WarriorIv0ry and can be found [here](https://i.imgur.com/JduEMsl.png).
+
+## Author
+
+This application was created by Matthew Ciolino. Visit [My Portfolio](https://www.matthewciolino.com/) to learn more.
