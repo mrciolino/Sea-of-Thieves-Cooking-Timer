@@ -26,7 +26,7 @@ export default function Home() {
               <span className="self-center text-xl font-semibold whitespace-nowrap dark:text-white">Sea of Thieves Cooking Timer</span>
             </a>
             <div className="flex text-3xl gap-5">
-              <a href='#' title="Github Repo"><Icon icon="mdi:github" /></a>
+              <a href='https://github.com/mrciolino/SoT_Fishing_Timer' title="Github Repo"><Icon icon="mdi:github" /></a>
               <a href='https://i.imgur.com/JduEMsl.png' title="Fishing Guide"><Icon icon="ph:fish" /></a>
             </div>
           </div>
