@@ -33,17 +33,18 @@ export default function Home() {
         </nav>
       </header>
 
-      <div className="container bg-slate-100 p-4 grid gap-5 grid-cols-2 lg:grid-cols-4 select-none">
-        <Card title="Fish" image="/fish.webp" duration={40} />
-        <Card title="Trophy" image="/trophy.webp" duration={90} />
-        <Card title="Chicken" image="/chicken.webp" duration={60} />
-        <Card title="Pork" image="/pork.webp" duration={60} />
-        <Card title="Snake" image="/snake.webp" duration={60} />
-        <Card title="Shark" image="/shark.webp" duration={60} />
-        <Card title="Meg" image="/meg.webp" duration={120} />
-        <Card title="Kraken" image="/kraken.webp" duration={120} />
+      <div className='flex justify-center items-center bg-slate-100 dark:bg-gray-900 select-none'>
+        <div className="container bg-slate-100 p-4 grid gap-5 grid-cols-2 lg:grid-cols-4">
+          <Card title="Fish" image="/fish.webp" duration={40} />
+          <Card title="Trophy" image="/trophy.webp" duration={90} />
+          <Card title="Chicken" image="/chicken.webp" duration={60} />
+          <Card title="Pork" image="/pork.webp" duration={60} />
+          <Card title="Snake" image="/snake.webp" duration={60} />
+          <Card title="Shark" image="/shark.webp" duration={60} />
+          <Card title="Meg" image="/meg.webp" duration={120} />
+          <Card title="Kraken" image="/kraken.webp" duration={120} />
+        </div>
       </div>
-
 
       <footer className='box-content bg-slate-300 text-sm text-gray-800 p-5 text-center items-center dark:text-gray-400'>
         <div>
