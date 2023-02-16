@@ -1,6 +1,6 @@
 import React from 'react'
 
-var speed: number = 1; // 1 = fast, 10 = normal
+var speed: number = 10; // 1 = fast, 10 = normal
 
 const ProgressBar: React.FC<{ value: number, duration: number, burntValue: number, burntDuration: number }> = ({ value, duration, burntValue, burntDuration }) => {
 
