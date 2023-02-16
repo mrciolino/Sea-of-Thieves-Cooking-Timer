@@ -1,11 +1,13 @@
 import React from 'react'
 
+var speed: number = 10; // 1 = fast, 10 = normal
+
 const ProgressBar: React.FC<{ value: number, duration: number, burntValue: number, burntDuration: number }> = ({ value, duration, burntValue, burntDuration }) => {
 
     var remaining: number = Math.round(duration - (duration * value / 100));
     var remainingBurnt: number = Math.round(burntDuration - (burntDuration * burntValue / 100));
-    const progressBarStyles = { width: `${value}%`, transition: 'width 0.3s, background-color 0.3s' }
-    const burntBarStyles = { width: `${burntValue}%`, transition: 'width 0.3s, background-color 0.3s' }
+    const progressBarStyles = { width: `${value}%`, transition: 'width 1.0s, background-color 2.0s, color 2.0s' }
+    const burntBarStyles = { width: `${burntValue}%`, transition: 'width 1.0s, background-color 2.0s, color 2.0s' }
 
     return (
         <>
@@ -17,7 +19,7 @@ const ProgressBar: React.FC<{ value: number, duration: number, burntValue: numbe
                 <div className="w-full bg-gray-200 h-2.5 rounded-full dark:bg-gray-300">
                     <div className={`${value > 80 ? 'bg-red-600' : 'bg-blue-600'} h-2.5 rounded-full`} style={progressBarStyles}>
                     </div>
-                    <div className={`${burntValue > 80 ? 'bg-red-800' : 'bg-red-800'} h-2.5 rounded-full absolute top-0`} style={burntBarStyles}>
+                    <div className="bg-red-900 h-2.5 rounded-full absolute top-0" style={burntBarStyles}>
                     </div>
                 </div>
             </div>
@@ -41,7 +43,7 @@ const Card: React.FC<{ title: string, image: string, duration: number }> = ({ ti
         if (inprogress) {
             const timer = setInterval(() => {
                 setValue((prevValue) => (prevValue >= 100 ? 0 : prevValue + 1));
-            }, duration * 10); // interval -> 40s * 1000ms/s % 100  = 400 ms -> 100% in 40s = duration * 10
+            }, duration * speed); // interval -> 40s * 1000ms/s % 100  = 400 ms -> 100% in 40s = duration * 10
             return () => {
                 clearInterval(timer);
             };
@@ -59,7 +61,7 @@ const Card: React.FC<{ title: string, image: string, duration: number }> = ({ ti
         if (burnt_inprogress) {
             const timer = setInterval(() => {
                 setBurnt_value((prevValue) => (prevValue >= 100 ? 0 : prevValue + 1));
-            }, duration * 10); // interval -> 40s * 1000ms/s % 100  = 400 ms -> 100% in 40s = duration * 10
+            }, duration * speed); // interval -> 40s * 1000ms/s % 100  = 400 ms -> 100% in 40s = duration * 10
             return () => {
                 clearInterval(timer);
             };
