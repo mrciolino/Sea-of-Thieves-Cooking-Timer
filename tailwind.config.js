@@ -11,8 +11,7 @@ module.exports = {
     // flowbite
     "./node_modules/flowbite/**/*.js",
   ],
-  theme: {
-    extend: {},
-  },
+  theme: { extend: {}, },
+  darkMode: 'class',
   plugins: [require('flowbite/plugin')],
 }
