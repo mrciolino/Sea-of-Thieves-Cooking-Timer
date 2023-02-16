@@ -21,9 +21,9 @@ export default function Home() {
       <header className="box-content">
         <nav className="bg-white px-2 sm:px-4 py-2.5 dark:bg-gray-900 w-full z-20 border-b border-gray-200 dark:border-gray-600">
           <div className="container flex flex-wrap items-center justify-between mx-auto">
-            <a href="https://flowbite.com/" className="flex items-center">
+            <a href="#" className="flex items-center">
               <img src="/fish_logo.webp" className="h-6 mr-3 sm:h-9" alt="Sea of Thieves Cooking Timer Logo" />
-              <span className="self-center text-xl font-semibold whitespace-nowrap dark:text-white">Sea of Thieves Cooking Timer</span>
+              <span className="self-center text-xl font-semibold whitespace-nowrap dark:text-white">SoT Cooking Timer</span>
             </a>
             <div className="flex text-3xl gap-5">
               <a href='https://github.com/mrciolino/SoT_Fishing_Timer' title="Github Repo"><Icon icon="mdi:github" /></a>
@@ -32,6 +32,13 @@ export default function Home() {
           </div>
         </nav>
       </header>
+
+      {/* Cooking Time (in seconds)
+        Food	              Under-cooked	Cooked	Burnt
+        Fish	              30s	          40s	    80s
+        Trophy Fish	        80s	          90s	    180s
+        Meat	              50s	          60s	    120s
+        Kraken & Megalodon	100s	        120s	  240s */}
 
       <div className='flex justify-center items-center bg-slate-100 dark:bg-gray-900 select-none'>
         <div className="container bg-slate-100 p-4 grid gap-5 grid-cols-2 lg:grid-cols-4">
@@ -50,7 +57,7 @@ export default function Home() {
         <div>
           <strong> Single Click - Start Timer | Double Click - Reset Timer </strong>
         </div>
-        <div className='flex justify-center items-center'>
+        <div className='flex justify-center items-center flex-wrap'>
           Made with Next.js &nbsp; <a aria-label="NextJS" href="https://nextjs.org/" className="ml-1"><Icon icon="simple-icons:nextdotjs" /></a> &nbsp;
           and TailWindCSS &nbsp; <a aria-label="TailWindCSS" href="https://tailwindcss.com/" className="ml-1"><Icon icon="mdi:tailwind" /></a> &nbsp;
           by Matthew Ciolino &nbsp;<a aria-label="Matthew Ciolino" href="https://www.matthewciolino.com/"> <img src="/portfolio.webp" alt="Portfolio Logo" className="h-5 inline" /></a>
