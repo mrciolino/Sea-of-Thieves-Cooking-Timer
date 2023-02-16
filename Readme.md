@@ -11,6 +11,10 @@ This application was built using the following technologies:
 - @iconify/react - A library of icons for use in web development
 - @next/font/google - A package that allows for the easy use of Google Fonts in Next.js projects
 
+## Deployment
+
+This application is deployed on Render at [https://sea-of-thieves-cooking-timer.onrender.com/](https://sea-of-thieves-cooking-timer.onrender.com/).
+
 ## Features
 
 - Simple and responsive design

@@ -26,24 +26,25 @@ export default function Home() {
               <span className="self-center text-xl font-semibold whitespace-nowrap dark:text-white">Sea of Thieves Cooking Timer</span>
             </a>
             <div className="flex text-3xl gap-5">
-              <a href='#' title="Github Repo"><Icon icon="mdi:github" /></a>
+              <a href='https://github.com/mrciolino/SoT_Fishing_Timer' title="Github Repo"><Icon icon="mdi:github" /></a>
               <a href='https://i.imgur.com/JduEMsl.png' title="Fishing Guide"><Icon icon="ph:fish" /></a>
             </div>
           </div>
         </nav>
       </header>
 
-      <div className="container bg-slate-100 p-4 grid gap-5 grid-cols-2 lg:grid-cols-4 select-none">
-        <Card title="Fish" image="/fish.webp" duration={40} />
-        <Card title="Trophy" image="/trophy.webp" duration={90} />
-        <Card title="Chicken" image="/chicken.webp" duration={60} />
-        <Card title="Pork" image="/pork.webp" duration={60} />
-        <Card title="Snake" image="/snake.webp" duration={60} />
-        <Card title="Shark" image="/shark.webp" duration={60} />
-        <Card title="Meg" image="/meg.webp" duration={120} />
-        <Card title="Kraken" image="/kraken.webp" duration={120} />
+      <div className='flex justify-center items-center bg-slate-100 dark:bg-gray-900 select-none'>
+        <div className="container bg-slate-100 p-4 grid gap-5 grid-cols-2 lg:grid-cols-4">
+          <Card title="Fish" image="/fish.webp" duration={40} />
+          <Card title="Trophy" image="/trophy.webp" duration={90} />
+          <Card title="Chicken" image="/chicken.webp" duration={60} />
+          <Card title="Pork" image="/pork.webp" duration={60} />
+          <Card title="Snake" image="/snake.webp" duration={60} />
+          <Card title="Shark" image="/shark.webp" duration={60} />
+          <Card title="Meg" image="/meg.webp" duration={120} />
+          <Card title="Kraken" image="/kraken.webp" duration={120} />
+        </div>
       </div>
-
 
       <footer className='box-content bg-slate-300 text-sm text-gray-800 p-5 text-center items-center dark:text-gray-400'>
         <div>
