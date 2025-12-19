@@ -2,71 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --max-width: 1100px;
-  --border-radius: 12px;
-  --font-mono: ui-monospace, Menlo, Monaco, 'Cascadia Mono', 'Segoe UI Mono',
-    'Roboto Mono', 'Oxygen Mono', 'Ubuntu Monospace', 'Source Code Pro',
-    'Fira Mono', 'Droid Sans Mono', 'Courier New', monospace;
-
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-
-  --primary-glow: conic-gradient(from 180deg at 50% 50%,
-      #16abff33 0deg,
-      #0885ff33 55deg,
-      #54d6ff33 120deg,
-      #0071ff33 160deg,
-      transparent 360deg);
-  --secondary-glow: radial-gradient(rgba(255, 255, 255, 1),
-      rgba(255, 255, 255, 0));
-
-  --tile-start-rgb: 239, 245, 249;
-  --tile-end-rgb: 228, 232, 233;
-  --tile-border: conic-gradient(#00000080,
-      #00000040,
-      #00000030,
-      #00000020,
-      #00000010,
-      #00000010,
-      #00000080);
-
-  --callout-rgb: 238, 240, 241;
-  --callout-border-rgb: 172, 175, 176;
-  --card-rgb: 180, 185, 188;
-  --card-border-rgb: 131, 134, 135;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-
-    --primary-glow: radial-gradient(rgba(1, 65, 255, 0.4), rgba(1, 65, 255, 0));
-    --secondary-glow: linear-gradient(to bottom right,
-        rgba(1, 65, 255, 0),
-        rgba(1, 65, 255, 0),
-        rgba(1, 65, 255, 0.3));
-
-    --tile-start-rgb: 2, 13, 46;
-    --tile-end-rgb: 2, 5, 19;
-    --tile-border: conic-gradient(#ffffff80,
-        #ffffff40,
-        #ffffff30,
-        #ffffff20,
-        #ffffff10,
-        #ffffff10,
-        #ffffff80);
-
-    --callout-rgb: 20, 20, 20;
-    --callout-border-rgb: 108, 108, 108;
-    --card-rgb: 100, 100, 100;
-    --card-border-rgb: 200, 200, 200;
-  }
-}
-
 * {
   box-sizing: border-box;
   padding: 0;
@@ -80,10 +15,11 @@ body {
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 a {
@@ -91,8 +27,125 @@ a {
   text-decoration: none;
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
+@layer utilities {
+  .border-gradient {
+    position: relative;
+    background: linear-gradient(var(--bg-color), var(--bg-color)) padding-box,
+                linear-gradient(90deg, #007acc, #1a8cd8, #007acc) border-box;
+    border: 2px solid transparent;
+  }
+  
+  .border-gradient-animated {
+    position: relative;
+    background: linear-gradient(var(--bg-color), var(--bg-color)) padding-box,
+                linear-gradient(90deg, 
+                  transparent 0%,
+                  #007acc 25%,
+                  #1a8cd8 50%,
+                  #007acc 75%,
+                  transparent 100%
+                ) border-box;
+    background-size: 200% 200%;
+    border: 3px solid transparent;
+    animation: gradient-rotate 3s linear infinite;
+  }
+  
+  @keyframes gradient-rotate {
+    0% {
+      background-position: 0% 50%;
+    }
+    100% {
+      background-position: 200% 50%;
+    }
+  }
+
+  /* State-specific traveling border with pulsing glow */
+  .border-gradient-animated-idle {
+    --pulse-color: rgba(62,62,66,0.25);
+    position: relative;
+    background: linear-gradient(var(--bg-color), var(--bg-color)) padding-box,
+                linear-gradient(90deg,
+                  transparent 0%,
+                  #3e3e42 25%,
+                  #2d2d30 50%,
+                  #3e3e42 75%,
+                  transparent 100%
+                ) border-box;
+    background-size: 200% 200%;
+    border: 3px solid transparent;
+    animation: gradient-rotate 4s linear infinite, pulse-shadow 2.6s ease-in-out infinite;
+  }
+
+  .border-gradient-animated-cooking {
+    --pulse-color: rgba(0,122,204,0.35);
+    position: relative;
+    background: linear-gradient(var(--bg-color), var(--bg-color)) padding-box,
+                linear-gradient(90deg,
+                  transparent 0%,
+                  #007acc 25%,
+                  #1a8cd8 50%,
+                  #007acc 75%,
+                  transparent 100%
+                ) border-box;
+    background-size: 200% 200%;
+    border: 3px solid transparent;
+    animation: gradient-rotate 3s linear infinite, pulse-shadow 2.2s ease-in-out infinite;
+  }
+
+  .border-gradient-animated-burning {
+    --pulse-color: rgba(241,76,76,0.35);
+    position: relative;
+    background: linear-gradient(var(--bg-color), var(--bg-color)) padding-box,
+                linear-gradient(90deg,
+                  transparent 0%,
+                  #f9a825 25%,
+                  #f14c4c 50%,
+                  #f9a825 75%,
+                  transparent 100%
+                ) border-box;
+    background-size: 200% 200%;
+    border: 3px solid transparent;
+    animation: gradient-rotate 2.4s linear infinite, pulse-shadow 1.8s ease-in-out infinite;
+  }
+
+  @keyframes pulse-shadow {
+    0%, 100% { box-shadow: 0 0 0 0 var(--pulse-color); }
+    50% { box-shadow: 0 0 0 10px rgba(0,0,0,0); }
+  }
+
+  /* Striped progress overlay */
+  .progress-striped {
+    position: absolute;
+    inset: 0;
+    background-image: repeating-linear-gradient(
+      -45deg,
+      rgba(255,255,255,0.12) 0px,
+      rgba(255,255,255,0.12) 10px,
+      rgba(0,0,0,0.12) 10px,
+      rgba(0,0,0,0.12) 20px
+    );
+    opacity: 0.35;
+    pointer-events: none;
+  }
+
+  .progress-striped-animated {
+    animation: stripe-move 1s linear infinite;
+    background-size: 28px 28px;
+  }
+
+  @keyframes stripe-move {
+    0% { background-position: 0 0; }
+    100% { background-position: 56px 0; }
+  }
+
+  /* Card state backgrounds for clearer visual states */
+  .card-bg-idle {
+    background: linear-gradient(145deg, rgba(37,37,38,0.9), rgba(30,30,30,0.85));
+  }
+  .card-bg-cooking {
+    background: linear-gradient(145deg, rgba(0,122,204,0.18), rgba(30,30,30,0.85));
+  }
+  .card-bg-burning {
+    background: linear-gradient(145deg, rgba(249,168,37,0.20), rgba(241,76,76,0.18), rgba(30,30,30,0.85));
   }
 }
